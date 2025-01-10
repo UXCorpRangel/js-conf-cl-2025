@@ -1,20 +1,15 @@
-import eslintReact from '@eslint-react/eslint-plugin'
 import pluginJs from '@eslint/js'
 import parserAstro from 'astro-eslint-parser'
 import { configs as configsAstro, environments } from 'eslint-plugin-astro'
 import eslintPluginJsonc from 'eslint-plugin-jsonc'
 import pluginPackageJson from 'eslint-plugin-package-json/configs/recommended'
 import perfectionist from 'eslint-plugin-perfectionist'
-import pluginReactHooks from 'eslint-plugin-react-hooks'
-import pluginReactRefresh from 'eslint-plugin-react-refresh'
 import pluginYml from 'eslint-plugin-yml'
 import globals from 'globals'
 import parserJsonc from 'jsonc-eslint-parser'
 import neostandard, { plugins, resolveIgnoresFromGitignore } from 'neostandard'
 import { parser as parserTs } from 'typescript-eslint'
 import parserYml from 'yaml-eslint-parser'
-
-const pluginReact = eslintReact.configs.all.plugins
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -86,31 +81,6 @@ export default [
       'yml/indent': ['error', 3, { indicatorValueIndent: 2 }],
       'yml/quotes': ['error', { prefer: 'double' }],
       '@stylistic/spaced-comment': 'off'
-    }
-  },
-  {
-    files: ['src/**/*.{jsx,tsx}'],
-    plugins: {
-      '@eslint-react': pluginReact['@eslint-react'],
-      '@eslint-react/dom': pluginReact['@eslint-react/dom'],
-      '@eslint-react/web-api': pluginReact['@eslint-react/web-api'],
-      'react-hooks': pluginReactHooks,
-      '@eslint-react/hooks-extra': pluginReact['@eslint-react/hooks-extra'],
-      '@eslint-react/naming-convention': pluginReact['@eslint-react/naming-convention'],
-      'react-refresh': pluginReactRefresh
-    },
-    languageOptions: {
-      parser: parserTs,
-      parserOptions: {
-        ecmaFeatures: { jsx: true }
-      }
-    },
-    rules: {
-      ...eslintReact.configs.recommended.rules,
-      ...eslintReact.configs.dom.rules,
-      ...eslintReact.configs['recommended-typescript'].rules,
-      ...pluginReactHooks.configs.recommended.rules,
-      ...pluginReactRefresh.configs.recommended.rules
     }
   },
   {
