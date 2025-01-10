@@ -1,0 +1,52 @@
+ls:
+   .js: kebab-case
+   .cjs: kebab-case
+   .mjs: kebab-case
+   .ts: kebab-case
+   .d.ts: kebab-case
+   .type.ts: kebab-case
+   .css: kebab-case
+   .json: kebab-case
+   .yml: kebab-case
+   .yaml: kebab-case
+
+   # Astro files
+   src/components:
+      .astro: PascalCase
+   src/components/ui:
+      .astro: PascalCase
+   src/layouts:
+      .astro: PascalCase
+   src/pages:
+      .astro: kebab-case
+   src/pages/_*:
+      .astro: PascalCase
+
+   # Multimedia files
+   .mp4: kebab-case
+   .webm: kebab-case
+   .mp3: kebab-case
+   .ogg: kebab-case
+
+   # Media files
+   .png: kebab-case
+   .jpg: kebab-case
+   .jpeg: kebab-case
+   .webp: kebab-case
+   .avif: kebab-case
+   .svg: kebab-case
+   .ico: kebab-case
+
+   .webmanifest: kebab-case
+
+ignore:
+   - .git
+   - node_modules
+   - dist
+   - .prettierrc.mjs
+   - .prettierignore
+   - eslint.config.js
+   - .eslintcache
+   - .ls-lint.yml
+   - astro.config.mjs
+   - commitlint.config.js

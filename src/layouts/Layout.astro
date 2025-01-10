@@ -1,0 +1,16 @@
+---
+import type { Options } from '@contracts'
+import Footer from '@components/ui/Footer.astro'
+import Base from '@layouts/Base.astro'
+
+interface Props {
+  options: Options
+}
+
+const { options } = Astro.props
+---
+
+<Base options={options}>
+  <slot />
+  <Footer />
+</Base>

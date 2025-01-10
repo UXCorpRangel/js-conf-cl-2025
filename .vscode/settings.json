@@ -1,0 +1,21 @@
+{
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "eslint.validate": [
+    "astro",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "json5",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "github-actions-workflow"
+  ],
+  "[astro]": {
+    "editor.formatOnSave": false
+  }
+}

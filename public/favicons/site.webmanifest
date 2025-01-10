@@ -1,0 +1,21 @@
+{
+  "name": "UXCorpRangel Boilerplate",
+  "short_name": "Boilerplate",
+  "icons": [
+    {
+      "src": "/favicons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#ee2525",
+  "background_color": "#404040",
+  "display": "standalone"
+}
