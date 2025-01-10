@@ -35,9 +35,6 @@ pnpm-lock.yaml
 # Optional npm cache directory
 .npm
 
-# Optional eslint cache
-.eslintcache
-
 # Created by git when using merge tools for conflicts
 *.BACKUP.*
 *.BASE.*
