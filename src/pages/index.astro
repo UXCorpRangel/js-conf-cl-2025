@@ -1,5 +1,6 @@
 ---
 import OpenGraph from '@components/OpenGraph.astro'
+import Social from '@components/ui/Social.astro'
 import Layout from '@layouts/Layout.astro'
 
 const options = {
@@ -17,5 +18,7 @@ const options = {
     title={options.title}
   />
 
-  <main></main>
+  <main>
+    <Social />
+  </main>
 </Layout>
