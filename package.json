@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
+    "@fontsource-variable/onest": "5.1.1",
     "@playform/compress": "0.1.7",
     "@playform/inline": "0.1.1",
     "astro": "5.1.5",
@@ -52,6 +53,7 @@
     "astro-icon": "1.1.5",
     "astro-seo-schema": "5.0.0",
     "astro-sitemap": "1.0.0",
+    "class-variance-authority": "0.7.1",
     "lightningcss": "1.29.1",
     "sanitize.css": "13.0.0",
     "schema-dts": "1.1.2",
