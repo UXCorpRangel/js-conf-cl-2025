@@ -2,12 +2,13 @@
 interface Props {
   title: string
   body: string
+  horizontal?: boolean
 }
 
-const { title, body } = Astro.props
+const { title, body, horizontal } = Astro.props
 ---
 
-<div class="info-card">
+<div class="info-card" class:list={horizontal ? 'horizontal' : ''}>
   <h2>{title}</h2>
   <p>{body}</p>
 </div>
@@ -21,6 +22,10 @@ const { title, body } = Astro.props
 
     & p {
       color: #78716C;
+    }
+
+    &.horizontal {
+      display: flex;
     }
   }
 </style>
