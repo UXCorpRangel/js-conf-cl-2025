@@ -44,7 +44,7 @@ Próximamente.
 
 ## 🔗 Enlaces
 
-Próximamente.
+[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/Q0l6KTHNpu6GOLwHyJRpMY/JSConf-2025?node-id=2-111&t=loein768MyHNSERr-1)
 
 ## 🤝 Contribuir
 
