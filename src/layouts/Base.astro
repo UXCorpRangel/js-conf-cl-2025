@@ -1,7 +1,9 @@
 ---
 import type { Options } from '@contracts'
 import Favicons from '@components/Favicons.astro'
+import onestWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url'
 import { Schema } from 'astro-seo-schema'
+import '@fontsource-variable/onest'
 import 'sanitize.css'
 import 'sanitize.css/forms.css'
 import 'sanitize.css/assets.css'
@@ -108,6 +110,7 @@ const { title, description, metaRobots } = options
 
     <slot name="stylesheet" />
 
+    <link as="font" crossorigin="anonymous" href={onestWoff2} rel="preload" type="font/woff2" />
     <slot name="preload" />
 
     <slot name="defer-script" />
