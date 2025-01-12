@@ -54,6 +54,8 @@
     "astro-seo-schema": "5.0.0",
     "astro-sitemap": "1.0.0",
     "class-variance-authority": "0.7.1",
+    "embla-carousel": "8.5.2",
+    "embla-carousel-autoplay": "8.5.2",
     "lightningcss": "1.29.1",
     "sanitize.css": "13.0.0",
     "schema-dts": "1.1.2",
