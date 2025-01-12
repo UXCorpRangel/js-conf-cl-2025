@@ -120,7 +120,7 @@ const { title, description, metaRobots } = options
     {description && <meta content={description} name="description" />}
     {description && <link href={Astro.url.href} rel="canonical" />}
     <meta
-      content="UXCorpRangel (Felix Icaza) - https://github.com/UXCorpRangel/boilerplate"
+      content="UXCorpRangel - https://github.com/UXCorpRangel"
       name="author"
     />
     <meta content={Astro.generator} name="generator" />
@@ -131,21 +131,16 @@ const { title, description, metaRobots } = options
           item={{
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'UXCorpRangel',
-            description:
-              'Donde Diseñadores y Desarrolladores se unen para ganar experiencias y conocimientos mientras crean proyectos increíbles.',
-            image: 'https://avatars.githubusercontent.com/u/172313798',
-            logo: 'https://avatars.githubusercontent.com/u/172313798',
-            url: 'https://uxcorprangel.github.io/',
+            name: 'JSConf Chile 2025 | La más prestigiosa conferencia de JavaScript',
+            url: Astro.url.href,
+            logo: Astro.url.href + 'og/og.jpg',
+            description: 'Acompáñanos en la tercera edición de la JSConf Chile donde tendremos Charlistas internacionales, comunidad, aprendizaje y conexiones.',
             sameAs: [
-              'https://github.com/UXCorpRangel/',
-              'https://www.linkedin.com/company/uxcorprangel',
-              'https://discord.gg/GBGPSQaKRf'
-            ],
-            address: {
-              '@type': 'PostalAddress',
-              addressCountry: 'Chile'
-            }
+              'https://www.linkedin.com/company/jsconf-chile/',
+              'https://www.instagram.com/jsconf.cl/',
+              'https://x.com/jsconfcl',
+              'https://www.facebook.com/jsconfcl'
+            ]
           }}
         />
       )
