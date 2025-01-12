@@ -12,7 +12,7 @@ interface Props {
 
 const { callToActionLabel, callToActionUrl, callToActionDescription, variant = 'outlined', descriptionWeight = 'normal' } = Astro.props
 ---
-<div class="call-to-action-container">
+<section class="call-to-action-container">
 
   <Button
     class="cta-btn"
@@ -23,10 +23,10 @@ const { callToActionLabel, callToActionUrl, callToActionDescription, variant = '
     {callToActionLabel}
   </Button>
 
-  <p class={`call-to-action-description ${descriptionWeight === 'bold' ? 'bold-description' : ''}`}>
+  <p class:list={['call-to-action-description', descriptionWeight === 'bold' && 'bold-description']}>
     {callToActionDescription}
   </p>
-</div>
+</section>
 
 <style>
   .call-to-action-container{
