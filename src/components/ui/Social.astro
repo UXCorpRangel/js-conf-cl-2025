@@ -49,18 +49,13 @@ import { Icon } from 'astro-icon/components'
 </div>
 
 <script>
-const menu = document.querySelector('.circle-menu')
-const items = menu.querySelectorAll('& > span')
+const menu = document.querySelector<HTMLDivElement>('.circle-menu')
+const items = menu?.querySelectorAll<HTMLSpanElement>('span.circle') ?? []
 
-menu.style.setProperty('--max-items', items.length)
+menu?.style?.setProperty('--max-items', `${items.length}`)
 
-document.querySelector('.menu').addEventListener('click', () => {
-  menu.classList.toggle('open')
-})
-
-items.forEach((el, index) => {
-  el.style.setProperty('--item', index)
-})
+document.querySelector('.menu')?.addEventListener('click', () => menu?.classList?.toggle('open'))
+items.forEach((el, index) => el.style.setProperty('--item', `${index}`))
 </script>
 
 <style>
@@ -71,8 +66,8 @@ items.forEach((el, index) => {
   --menu-color-fg: var(--body-color);
 
   --item-size: calc(var(--menu-size) * 0.9);
-  --item-color-bg: black;
-  --item-color-fg: #fff;
+  --item-color-bg: var(--black);
+  --item-color-fg: var(--white);
   --item-distance: calc(var(--item-size) * 1.2);
   --item-timing: ease-in-out;
 
@@ -106,7 +101,7 @@ items.forEach((el, index) => {
     justify-content: center;
     width: var(--menu-size);
     height: var(--menu-size);
-    color: #000;
+    color: var(--black);
     background: var(--menu-color-bg);
     transition: scale 0.5s, background 0.3s;
     position: absolute;
@@ -143,7 +138,7 @@ items.forEach((el, index) => {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(from var(--black) r g b / 0.5);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
