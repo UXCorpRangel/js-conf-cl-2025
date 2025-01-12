@@ -1,0 +1,92 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cva, type VariantProps } from 'class-variance-authority'
+
+const buttonVariantes = cva(
+  'btn', {
+    variants: { variant: { contained: 'contained', outlined: 'outlined' } },
+    defaultVariants: { variant: 'contained' }
+  }
+)
+
+type ButtonProps = { component?: 'button' } & HTMLAttributes<'button'>
+type AnchorProps = { component: 'a' } & HTMLAttributes<'a'>
+
+type Props = (ButtonProps | AnchorProps) & VariantProps<typeof buttonVariantes>
+
+const {
+  variant,
+  component,
+  class: className,
+  ...rest
+} = Astro.props
+
+---
+
+{component === 'a'
+  ? (
+      <a class:list={[buttonVariantes({ variant }), className]} {...rest}>
+        <slot />
+      </a>
+    )
+  : (
+      <button class:list={[buttonVariantes({ variant }), className]} {...(rest as Omit<HTMLAttributes<'button'>, 'class'>)}>
+        <slot />
+      </button>
+    )}
+
+<style>
+.btn {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding-block: var(--rounded-2xl);
+  padding-inline: var(--rounded-3xl);
+  border-radius: var(--rounded-sm);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+  outline: none;
+
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &.contained {
+    border: none;
+    color: var(--black);
+    background-color: var(--yellow-500);
+
+    &:hover {
+      background-color: var(--yellow-600);
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 1rem var(--yellow-500);
+    }
+
+    &:active {
+      background-color: var(--yellow-300);
+    }
+  }
+
+  &.outlined {
+    color: var(--white);
+    background-color: transparent;
+    border: 1px solid var(--amber-400);
+
+    &:hover {
+      background-color: rgb(from var(--yellow-300) r g b / 0.2);
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 1rem var(--amber-400);
+    }
+
+    &:active {
+      background-color: rgb(from var(--amber-400) r g b / 0.5);
+    }
+  }
+}
+</style>
