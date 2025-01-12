@@ -1,11 +1,12 @@
 ---
-import Stars from '@components/ui/Stars.astro';
+import Stars from '@components/ui/Stars.astro'
+import { Icon } from 'astro-icon/components';
 ---
 
-<section>
+<header>
   <div>
     <img alt="JSConf Logo" src="https://placehold.co/315x122" />
-    <h1>🚩 En Santiago de Chile</h1>
+    <h1> <a class="location-icon" href="/"> <Icon name="location" /></a>  En <span class="location-name">Santiago</span> de Chile</h1>
     <article>
       <h2>La conferencia de tecnología más esperada del país</h2>
       <p>
@@ -15,28 +16,26 @@ import Stars from '@components/ui/Stars.astro';
     </article>
   </div>
   <Stars />
-</section>
+</header>
 
 <style>
-  section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
+  header {
+    display: grid;
+    place-items: center;
+    height: 100dvh;
     color: var(--white);
-    border-radius: 1rem;
+    text-align: center;
 
-    & div {
-      position: absolute;
-      text-align: center;
-
-      & img {
-        width: 100%;
-        max-width: 315px;
-      }
+    & img {
+      width: 100%;
+      max-width: 315px;
     }
+  }
+  .location-icon{
+      display: inline-flex;
+      align-items: center;
+  }
+  .location-name{
+    color: var(--yellow-400);
   }
 </style>
