@@ -1,15 +1,43 @@
-<footer>
-  <p>
-    Hecho con
-    <video autoplay loop muted playsinline preload="metadata" src="/media/heart.webm" width="24"></video>
-    por
-    <a href="https://github.com/UXCorpRangel" target="_blank">UXCorpRangel</a>
-  </p>
+<footer class="footer">
+  <hgroup class="footer-header">
+    <h2 class="footer-title">Elige cómo ser parte de JSConf Chile 2025</h2>
+    <p class="footer-subtitle">Conecta, comparte y transforma con nosotros</p>
+  </hgroup>
 </footer>
 
 <style>
-  footer {
-    padding-inline: 1rem;
-    text-align: center;
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3.3rem;
+    text-wrap: pretty;
   }
+  .footer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8125rem;
+  }
+  .footer-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 3rem;
+    margin: 0;
+  }
+  .footer-subtitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #FBBF24;
+    margin: 0;
+  }
+
+@media (width <= 768px) {
+  .footer-title {
+    font-size: 1.5rem;
+  }
+  .footer-subtitle {
+    font-size: 1rem;
+  }
+}
 </style>
