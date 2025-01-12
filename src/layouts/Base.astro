@@ -1,9 +1,11 @@
 ---
 import type { Options } from '@contracts'
 import Favicons from '@components/Favicons.astro'
-import onestWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url'
+import onestWoff2 from '@fontsource-variable/inconsolata/files/inconsolata-latin-wght-normal.woff2?url'
+import inconsolataWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url'
 import { Schema } from 'astro-seo-schema'
 import '@fontsource-variable/onest'
+import '@fontsource-variable/inconsolata'
 import '@styles/globals.css'
 import 'sanitize.css'
 import 'sanitize.css/forms.css'
@@ -16,7 +18,7 @@ interface Props {
 }
 
 const { options } = Astro.props
-const { title, description, metaRobots } = options
+const { title, description, metaRobots } = options;
 ---
 
 <!doctype html>
@@ -111,7 +113,20 @@ const { title, description, metaRobots } = options
 
     <slot name="stylesheet" />
 
-    <link as="font" crossorigin="anonymous" href={onestWoff2} rel="preload" type="font/woff2" />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href={onestWoff2}
+      rel="preload"
+      type="font/woff2"
+    />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href={inconsolataWoff2}
+      rel="preload"
+      type="font/woff2"
+    />
     <slot name="preload" />
 
     <slot name="defer-script" />
@@ -134,7 +149,8 @@ const { title, description, metaRobots } = options
             name: 'JSConf Chile 2025 | La más prestigiosa conferencia de JavaScript',
             url: Astro.url.href,
             logo: Astro.url.href + 'og/og.jpg',
-            description: 'Acompáñanos en la tercera edición de la JSConf Chile donde tendremos Charlistas internacionales, comunidad, aprendizaje y conexiones.',
+            description:
+              'Acompáñanos en la tercera edición de la JSConf Chile donde tendremos Charlistas internacionales, comunidad, aprendizaje y conexiones.',
             sameAs: [
               'https://www.linkedin.com/company/jsconf-chile/',
               'https://www.instagram.com/jsconf.cl/',

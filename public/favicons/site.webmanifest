@@ -1,6 +1,6 @@
 {
-  "name": "UXCorpRangel Boilerplate",
-  "short_name": "Boilerplate",
+  "name": "JSConf Chile",
+  "short_name": "JSConf Chile",
   "icons": [
     {
       "src": "/favicons/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ee2525",
-  "background_color": "#404040",
+  "theme_color": "#2e302c",
+  "background_color": "#2e302c",
   "display": "standalone"
 }

@@ -1,8 +1,12 @@
 ---
 import OpenGraph from '@components/OpenGraph.astro'
-import Slider from '@components/ui/Slider.astro'
 import Social from '@components/ui/Social.astro'
 import Layout from '@layouts/Layout.astro'
+
+import BentoGrid from './_index/BentoGridSection.astro'
+import Countdown from './_index/CountdownSection.astro'
+import Hero from './_index/HeroSection.astro'
+import SliderSection from './_index/SliderSection.astro'
 
 const options = {
   title: 'JSConf Chile 2025 | La más prestigiosa conferencia de JavaScript',
@@ -20,7 +24,10 @@ const options = {
   />
 
   <main>
-    <Slider />
+    <Hero />
+    <Countdown />
+    <BentoGrid />
+    <SliderSection />
     <Social />
   </main>
 </Layout>
