@@ -1,12 +1,13 @@
 ---
+import type { ButtonVariant, FontWeight } from '@contracts'
 import Button from './Button.astro'
 
 interface Props {
   callToActionLabel: string
   callToActionUrl: string
   callToActionDescription: string
-  variant?: 'contained' | 'outlined'
-  descriptionWeight?: 'normal' | 'bold'
+  variant?: ButtonVariant
+  descriptionWeight?: FontWeight
 }
 
 const { callToActionLabel, callToActionUrl, callToActionDescription, variant = 'outlined', descriptionWeight = 'normal' } = Astro.props
