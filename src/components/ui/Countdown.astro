@@ -1,0 +1,198 @@
+---
+import '@fontsource-variable/inconsolata';
+---
+
+  <div class="countdown">
+    <p class="coming-soon">Próximamente</p>
+    <div class="counters-wrapper">
+      <div class="counter">
+        <span id="days">00</span>
+        <p>Días</p>
+      </div>
+
+      <span class="separator"></span>
+
+      <div class="counter">
+        <span id="hours">00</span>
+        <p>Horas</p>
+      </div>
+
+      <span class="separator"></span>
+
+      <div class="counter">
+        <span id="minutes">00</span>
+        <p>Minutos</p>
+      </div>
+
+      <span class="separator"></span>
+
+      <div class="counter">
+        <span id="seconds">00</span>
+        <p>Segundos</p>
+      </div>
+    </div>
+  </div>
+
+<script is:inline>
+const countDownDate = new Date('Jan 11, 2025 02:00:00').getTime()
+
+const comingSoonText = document.querySelector('.coming-soon')
+const countersWrapper = document.querySelector('.counters-wrapper')
+
+if (!isNaN(countDownDate) && countDownDate > Date.now()) {
+  comingSoonText.style.display = 'none'
+  countersWrapper.style.display = 'flex'
+
+  const x = setInterval(() => {
+    const now = new Date().getTime()
+    const distance = countDownDate - now
+
+    if (distance < 0) {
+      clearInterval(x)
+
+      comingSoonText.style.display = 'block'
+      countersWrapper.style.display = 'none'
+    } else {
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      )
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+      document.getElementById('days').innerHTML =
+          days < 10 ? '0' + days : days
+      document.getElementById('hours').innerHTML =
+          hours < 10 ? '0' + hours : hours
+      document.getElementById('minutes').innerHTML =
+          minutes < 10 ? '0' + minutes : minutes
+      document.getElementById('seconds').innerHTML =
+          seconds < 10 ? '0' + seconds : seconds
+    }
+  }, 1000)
+}
+</script>
+
+<style>
+  .countdown {
+    width: 100%;
+    max-width: 694px;
+    height: auto;
+    max-height: 135px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+    border-radius: var(--rounded-md);
+    outline: 1px solid var(--stone-700);
+
+    color: var(--white);
+
+    background: rgba(12, 10, 9, 0.7);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+
+    & .counters-wrapper {
+      display: none;
+      width: 100%;
+      padding: 24px 32px;
+      justify-content: space-around;
+
+      & .counter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: "Inconsolata Variable", monospace;
+        line-height: 1;
+
+        & #days,
+        & #hours,
+        & #minutes,
+        & #seconds {
+          font-size: 56px;
+          font-weight: 700;
+        }
+
+        & p {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+
+      & .separator {
+        width: 1px;
+        height: auto;
+        background: var(--stone-700);
+      }
+    }
+
+    & .coming-soon {
+      font-family: "Inconsolata Variable", monospace;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  @media (width <= 1024px) {
+    .countdown {
+      max-width: 80%;
+
+      & .counters-wrapper {
+        padding: 25px 41px;
+        width: 100%;
+
+        & .counter {
+          & #days,
+          & #hours,
+          & #minutes,
+          & #seconds {
+            font-size: 51px;
+          }
+        }
+
+        & p {
+          font-size: 22px;
+        }
+      }
+
+      & .coming-soon {
+        font-size: 48px;
+      }
+    }
+  }
+
+  @media (width <= 768px) {
+    .countdown {
+      max-width: 90%;
+
+      & .counters-wrapper {
+        padding: 16px 24px;
+        width: 100%;
+
+        & .counter {
+          & #days,
+          & #hours,
+          & #minutes,
+          & #seconds {
+            font-size: 32px;
+          }
+        }
+
+        & p {
+          font-size: 14px;
+        }
+      }
+
+      & .coming-soon {
+        font-size: 32px;
+      }
+    }
+  }
+</style>
