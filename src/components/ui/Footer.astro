@@ -3,17 +3,6 @@
     <h2 class="footer-title">Elige cómo ser parte de JSConf Chile 2025</h2>
     <p class="footer-subtitle">Conecta, comparte y transforma con nosotros</p>
   </hgroup>
-  <ul class="footer-list">
-    <li class="footer-list-item">
-      <p>Comparte tus ideas con la comunidad de desarrolladores</p>
-    </li>
-    <li class="footer-list-item">
-      <p>!Destaca tu marca en el mayor evento tecnológico de Chile!</p>
-    </li>
-    <li class="footer-list-item">
-      <p>Mira lo que ya hemos hecho en los años anteriores</p>
-    </li>
-  </ul>
 </footer>
 
 <style>
@@ -21,8 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 3.375rem;
-    padding: 0 1.5rem;
+    gap: 3.3rem;
     text-wrap: pretty;
   }
   .footer-header {
@@ -34,35 +22,15 @@
     text-align: center;
     font-weight: 600;
     font-size: 3rem;
+    margin: 0;
   }
   .footer-subtitle {
     text-align: center;
     font-weight: 400;
     font-size: 1.5rem;
     color: #FBBF24;
+    margin: 0;
   }
-  .footer-list {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-  }
-  .footer-list-item {
-    display: flex;
-    justify-content: center;
-  font-size: 1.25rem;
-  text-align: center;
-  width: 100%;
-  margin: auto;
-  border-right: 1px solid #44403C;
-
-  & p {
-    max-width: 33ch;
-  }
-
-  &:last-child {
-    border-right: none;
-  }
-}
 
 @media (width <= 768px) {
   .footer-title {
@@ -70,18 +38,6 @@
   }
   .footer-subtitle {
     font-size: 1rem;
-  }
-
-  .footer-list {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 0;
-  }
-  .footer-list-item {
-    border-right: none;
-    border-bottom: 1px solid #44403C;
   }
 }
 </style>
