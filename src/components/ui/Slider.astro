@@ -1,0 +1,36 @@
+---
+import type { ImageMetadata } from 'astro'
+import slider from '@data/slider-images'
+import { Picture } from 'astro:assets'
+import '@styles/slider.css'
+
+const getImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/slider/*.{jpeg,jpg,png}'
+);
+---
+
+<section class="slider-container">
+  <section class="embla">
+    <div class="embla-viewport">
+      <div class="embla-container">
+        {
+          slider.map(({ alt, src }) => (
+            <div class="embla-slide">
+              <Picture
+                alt={alt}
+                fetchpriority="low"
+                formats={['avif', 'webp']}
+                src={getImages[src]()}
+                width={549}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</section>
+
+<script>
+  import '@scripts/slider'
+</script>
