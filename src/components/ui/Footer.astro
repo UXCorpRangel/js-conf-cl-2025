@@ -1,8 +1,57 @@
+---
+import type { ButtonVariant, FontWeight } from '@contracts'
+import CallToAction from './CallToAction.astro'
+
+interface CtaItem {
+  label: string
+  description: string
+  variant: ButtonVariant
+  descriptionWeight: FontWeight
+}
+
+const cta: CtaItem[] = [
+  {
+    label: 'Postula tu charla',
+    description: 'Comparte tus ideas con la comunidad de desarrolladores',
+    variant: 'outlined',
+    descriptionWeight: 'normal'
+  },
+  {
+    label: 'Hazte Sponsor',
+    description: '¡Destaca tu marca en el mayor evento tecnológico de Chile!',
+    variant: 'contained',
+    descriptionWeight: 'bold'
+  },
+  {
+    label: 'Ver antiguas ediciones',
+    description: 'Mira lo que ya hemos hecho en los años anteriores',
+    variant: 'outlined',
+    descriptionWeight: 'normal'
+  }
+]
+---
+
 <footer class="footer">
   <hgroup class="footer-header">
     <h2 class="footer-title">Elige cómo ser parte de JSConf Chile 2025</h2>
     <p class="footer-subtitle">Conecta, comparte y transforma con nosotros</p>
   </hgroup>
+  <div class="footer-cta">
+    {
+      cta.map(({ label, description, variant, descriptionWeight }, index: number) => (
+        <>
+          <CallToAction
+            callToActionDescription={description}
+            callToActionLabel={label}
+            callToActionUrl="#"
+            descriptionWeight={descriptionWeight}
+            variant={variant}
+          />
+          {index < cta.length - 1 && <span class="separator" />}
+        </>
+      ))
+    }
+  </div>
 </footer>
 
 <style>
@@ -12,32 +61,65 @@
     justify-content: center;
     gap: 3.3rem;
     text-wrap: pretty;
-  }
-  .footer-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8125rem;
-  }
-  .footer-title {
-    text-align: center;
-    font-weight: 600;
-    font-size: 3rem;
-    margin: 0;
-  }
-  .footer-subtitle {
-    text-align: center;
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: #FBBF24;
-    margin: 0;
+    padding: 0 62px;
+    padding-block-end: 100px;
+    & .footer-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8125rem;
+    }
+    & .footer-title {
+      text-align: center;
+      font-weight: 600;
+      font-size: 3rem;
+      margin: 0;
+    }
+    & .footer-subtitle {
+      text-align: center;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: var(--yellow-400);
+      margin: 0;
+    }
+    & .footer-cta {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100%;
+      gap: 1.5rem;
+      & .separator {;
+        width: 1px;
+        background-color: var(--stone-700);
+        margin: 0 1.5rem;
+      }
+    }
   }
 
 @media (width <= 768px) {
-  .footer-title {
-    font-size: 1.5rem;
-  }
-  .footer-subtitle {
-    font-size: 1rem;
+  .footer {
+    padding: 0 24px;
+    & .footer-header {
+      padding: 0 24px;
+      & .footer-title {
+        font-size: 1.5rem;
+      }
+      & .footer-subtitle {
+        font-size: 1rem;
+      }
+    }
+    & .footer-cta {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 24px;
+      & .separator {
+        width: 100%;
+        height: 1px;
+        background-color: var(--stone-700);
+        margin: 0;
+      }
+    }
   }
 }
 </style>
