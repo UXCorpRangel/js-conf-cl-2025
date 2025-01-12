@@ -1,0 +1,156 @@
+---
+import Card from '@components/ui/Card.astro'
+import { Image } from 'astro:assets'
+
+const bento1 = [
+  {
+    id: 1,
+    title: '¿Qué es JSConf Chile?',
+    description: 'JSConf Chile no es solo una conferencia, es un punto de encuentro donde la pasión por JavaScript se convierte en innovación, donde las ideas encuentran su propósito y donde una comunidad unida marca la diferencia.'
+  },
+  {
+    id: 2,
+    title: 'Sé parte de algo grande',
+    description: 'JSConf Chile 2025 es más que un evento. Es el lugar donde todo comienza. ¿Estás listo para ser parte del cambio?'
+  }
+]
+
+const bento2 = [
+  {
+    id: 1,
+    title: 'Charlas que inspiran',
+    description: 'Escucha a quienes están reimaginando el futuro del desarrollo web.'
+  },
+  {
+    id: 2,
+    title: 'Conexiones que trascienden',
+    description: 'Rodéate de personas que comparten tu visión y tu pasión por el código.'
+  },
+  {
+    id: 3,
+    title: 'Talleres que transforman',
+    description: 'Aprende practicando, desde los fundamentos hasta las ideas más avanzadas.'
+  },
+  {
+    id: 4,
+    title: 'Un entorno para crecer',
+    description: ' Siente la energía de un espacio diseñado para colaborar, crear y soñar en grande.'
+  }
+]
+---
+
+<section class="bento-1">
+  {
+    bento1.map(({ id, title, description }) => (
+      <article class={`bento1-card${id}`}>
+        <Card body={description} title={title} />
+      </article>
+    ))
+  }
+  <figure class="bento1-image">
+    <Image alt="JSConf Chile 2024" height={446} src="/media/jsconf-dia2evento-501.webp" width={609} />
+    <figcaption>
+      Imagen de la JSConf Chile 2024 comunidad reunida
+    </figcaption>
+  </figure>
+</section>
+
+<section class="bento-2">
+  <figure class="bento2-image">
+    <Image alt="JSConf Chile 2024 acreditación del evento" height={362} src="/media/jsconf-dia2evento-611.webp" width={738} />
+    <figcaption>
+      Imagen de la JSConf Chile 2024 acreditación de evento
+    </figcaption>
+  </figure>
+  {
+    bento2.map(({ id, title, description }) => (
+      <article class={`bento2-card${id}`}>
+        <Card body={description} title={title} />
+      </article>
+    ))
+  }
+</section>
+
+<style>
+.bento-1 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: 5;
+  gap: 3rem;
+}
+article {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.bento1-card1 { grid-area: 1 / 1 / 4 / 3; }
+.bento1-card2 { grid-area: 4 / 1 / 6 / 3; }
+.bento1-image {
+  grid-area: 1 / 3 / 6 / 5;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  & img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--rounded-lg);
+    aspect-ratio: 609/446;
+  }
+}
+figcaption {
+  display: none;
+}
+.bento-2 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(4, auto);
+  margin-top: 100px;
+  gap: 3rem;
+}
+.bento2-image {
+  grid-area: 1 / 1 / 5 / 3;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.bento2-card1 { grid-area: 1 / 3 / 3 / 4; }
+.bento2-card2 { grid-area: 3 / 3 / 5 / 4; }
+.bento2-card3 { grid-area: 1 / 4 / 3 / 5; }
+.bento2-card4 { grid-area: 3 / 4 / 5 / 5; }
+
+@media (width <= 768) {
+  .bento-1 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+  }
+  .bento1-card1 { grid-area: 1 / 1 / 2 / 2; }
+  .bento1-card2 { grid-area: 2 / 1 / 3 / 2; }
+  .bento1-image { grid-area: 3 / 1 / 4 / 2; }
+
+  .bento-2 {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+  }
+  .bento2-card1 { grid-area: 1 / 1 / 2 / 2; }
+  .bento2-card2 { grid-area: 2 / 1 / 3 / 2; }
+  .bento2-card3 { grid-area: 1 / 2 / 2 / 3; }
+  .bento2-card4 { grid-area: 2 / 2 / 3 / 3; }
+  .bento2-image { grid-area: 3 / 1 / 4 / 3; }
+}
+
+@media (width <= 375) {
+  .bento-2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+  }
+  .bento2-card1 { grid-area: 1 / 1 / 2 / 2; }
+  .bento2-card2 { grid-area: 2 / 1 / 3 / 2; }
+  .bento2-card3 { grid-area: 3 / 1 / 4 / 2; }
+  .bento2-card4 { grid-area: 4 / 1 / 5 / 2; }
+  .bento2-image { grid-area: 5 / 1 / 6 / 2; }
+}
+</style>
