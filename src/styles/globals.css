@@ -2,6 +2,11 @@
   --black: #000000;
   --white: #ffffff;
 
+  --stone-500: #78716c;
+  --stone-700: #44403c;
+  --stone-800: #292524;
+  --stone-950: #0c0a09;
+
   --yellow-300: #facc15;
   --yellow-400: #fbbf24;
   --yellow-500: #eab308;
@@ -17,7 +22,12 @@
   --rounded-3xl: 1.5rem;
   --rounded-full: 9999px;
 
-  --gradient-gold: linear-gradient(266.15deg, #2A2401 -18.86%, #9A8025 39.58%, #EDE060 99.61%);
+  --gradient-gold: linear-gradient(
+    266.15deg,
+    #2a2401 -18.86%,
+    #9a8025 39.58%,
+    #ede060 99.61%
+  );
 }
 
 body {
