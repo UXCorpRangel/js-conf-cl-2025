@@ -3,14 +3,14 @@ import { Icon } from 'astro-icon/components'
 
 interface Props {
   title: string
-  scroll: string
+  href: string
 }
 
-const { title, scroll } = Astro.props;
+const { title, href } = Astro.props;
 ---
 <div class="click-to-scroll-wrapper">
   <h3>{title}</h3>
-  <a href={scroll}>
+  <a href={href}>
     <Icon name="chevron-down" />
   </a>
 </div>
