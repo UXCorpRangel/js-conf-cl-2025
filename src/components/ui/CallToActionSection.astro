@@ -1,0 +1,76 @@
+---
+import CallToAction from './CallToAction.astro'
+
+interface callToActionItem {
+  buttonText: string
+  description: string
+  href: string
+}
+
+interface Props {
+  items: callToActionItem[]
+}
+
+const { items } = Astro.props
+
+const getVariantButtons = (index: number, total: number): 'outlined' | 'contained' => {
+  if (total === 1) {
+    return 'outlined'
+  }
+  if (total === 2) {
+    return index === 0 ? 'outlined' : 'contained'
+  }
+  if (total === 3) {
+    return index === 1 ? 'contained' : 'outlined'
+  }
+  return 'outlined'
+}
+
+const getDescriptionWeight = (index: number, total: number): 'normal' | 'bold' => {
+  return (total === 3 && index === 1) ? 'bold' : 'normal'
+}
+---
+
+<div class="cta-section">
+  {
+    items.map((item: callToActionItem, index: number) => (
+      <>
+        <CallToAction
+          callToActionDescription={item.description}
+          callToActionLabel={item.buttonText}
+          callToActionUrl={item.href}
+          descriptionWeight={getDescriptionWeight(index, items.length)}
+          variant={getVariantButtons(index, items.length)}
+        />
+        {index < items.length - 1 && <div class="separator" />}
+      </>
+    ))
+  }
+</div>
+
+<style>
+  .cta-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    margin: 0 auto;
+  }
+
+  .separator {
+    width: 1px;
+    background-color: var(--stone-700);
+  }
+
+  @media screen and (width <= 768px) {
+    .cta-section {
+      flex-direction: column;
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+    }
+  }
+</style>

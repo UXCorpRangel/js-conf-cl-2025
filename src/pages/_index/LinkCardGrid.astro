@@ -1,35 +1,24 @@
 ---
-import Card from '@ui/Card.astro'
+import Card from '@ui/Card.astro';
 ---
-
-<ul class="link-card-grid">
-  <Card
-    body="Learn how Astro works and explore the official API docs."
-    href="https://docs.astro.build/"
-    title="Documentation"
-  />
-  <Card
-    body="Supercharge your project with new frameworks and libraries."
-    href="https://astro.build/integrations/"
-    title="Integrations"
-  />
-  <Card
-    body="Explore a galaxy of community-built starter themes."
-    href="https://astro.build/themes/"
-    title="Themes"
-  />
-  <Card
-    body="Come say hi to our amazing Discord community. ❤️"
-    href="https://astro.build/chat/"
-    title="Community"
-  />
-</ul>
+  <div class="card-grid">
+    <Card
+      body="Learn how Astro works and explore the official API docs."
+      title="Documentation"
+    />
+    <Card
+      body="Need ideas for your next project? Check out the GitHub repo."
+      title="GitHub"
+    />
+  </div>
+  <div>
+    <Card
+      body="Supercharge your project with new frameworks and libraries."
+      title="Integrations"
+      vertical
+    />
+  </div>
 
 <style>
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
-  }
+
 </style>

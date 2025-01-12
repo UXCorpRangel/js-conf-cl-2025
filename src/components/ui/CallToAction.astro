@@ -1,0 +1,61 @@
+---
+import Button from './Button.astro'
+
+interface Props {
+  callToActionLabel: string
+  callToActionUrl: string
+  callToActionDescription: string
+  variant?: 'contained' | 'outlined'
+  descriptionWeight?: 'normal' | 'bold'
+}
+
+const { callToActionLabel, callToActionUrl, callToActionDescription, variant = 'outlined', descriptionWeight = 'normal' } = Astro.props
+---
+<div class="call-to-action-container">
+
+  <Button
+    class="cta-btn"
+    component="a"
+    href={callToActionUrl}
+    variant={variant}
+  >
+    {callToActionLabel}
+  </Button>
+
+  <p class={`call-to-action-description ${descriptionWeight === 'bold' ? 'bold-description' : ''}`}>
+    {callToActionDescription}
+  </p>
+</div>
+
+<style>
+  .call-to-action-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      .cta-btn{
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .call-to-action-description{
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        text-wrap: balance;
+        margin: 0;
+    }
+    .bold-description {
+      font-weight: 700;
+    }
+
+  }
+
+  @media screen and (width <= 768px) {
+    .cta-btn{
+        width: 100%;
+      }
+}
+</style>

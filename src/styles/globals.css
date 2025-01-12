@@ -1,0 +1,39 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+
+  --stone-500: #78716c;
+  --stone-700: #44403c;
+  --stone-800: #292524;
+  --stone-950: #0c0a09;
+
+  --yellow-300: #facc15;
+  --yellow-400: #fbbf24;
+  --yellow-500: #eab308;
+  --yellow-600: #ca8a04;
+
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+
+  --gap: 0.25rem;
+
+  --rounded-sm: 0.25rem;
+  --rounded-md: 0.375rem;
+  --rounded-lg: 0.5rem;
+  --rounded-xl: 0.75rem;
+  --rounded-2xl: 1rem;
+  --rounded-3xl: 1.5rem;
+  --rounded-full: 9999px;
+
+  --gradient-gold: linear-gradient(
+    266.15deg,
+    #2a2401 -18.86%,
+    #9a8025 39.58%,
+    #ede060 99.61%
+  );
+}
+
+body {
+  font-size: 16px;
+  font-family: "Onest Variable", sans-serif;
+}
