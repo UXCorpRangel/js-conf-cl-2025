@@ -38,7 +38,7 @@ export class ParallaxEffect {
       ([entry]) => {
         this.isVisible = entry.isIntersecting // Actualiza el estado de visibilidad
       },
-      { threshold: visibilityThreshold, rootMargin: '0px 0px 0px 50%' } // Umbral de visibilidad
+      { threshold: visibilityThreshold, rootMargin: '0px 0px 0px 70%' } // Umbral de visibilidad
     )
 
     // Observa el contenedor
