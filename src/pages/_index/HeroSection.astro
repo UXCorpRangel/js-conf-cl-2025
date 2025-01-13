@@ -1,14 +1,14 @@
 ---
+
 import CallToAction from '@components/ui/CallToAction.astro'
 import { cta } from '@components/ui/Footer.astro'
 import Stars from '@components/ui/Stars.astro'
 // Estos iconos son los que van arriba del h1, deberia ser un solo svg :p
 // import jsConfLogo from "../../../public/logo/logo conf2025.svg";
 // import favIcon from "../../../public/favicons/favicon.svg";
-import Location from '../../icons/Location.astro';
 ---
 
-<section>
+<header>
   <div>
     <!-- <div class="logo-container" >
     <img src={favIcon.src} alt="Javascript icon" />
@@ -17,10 +17,9 @@ import Location from '../../icons/Location.astro';
     <!-- <img src={favIcon.src} alt="Javascript icon" />
     <img alt="JSConf Logo 2025" src={jsConfLogo.src} /> -->
     <img alt="JSConf Logo" src="https://placehold.co/315x122" />
-    <h1>
-      <Location />
-      En <strong>Santiago</strong> de Chile
-    </h1>
+
+    <h1> <a class="location-icon" href="/"> <Icon name="location" /></a>  En <span class="location-name">Santiago</span> de Chile</h1>
+
     <article>
       <h2>La conferencia de tecnología más esperada del país</h2>
       <p>
@@ -61,19 +60,16 @@ import Location from '../../icons/Location.astro';
     <img alt="placeholder for scroll button" src="https://placehold.co/50x51" />
   </div>
   <Stars />
-</section>
+</header>
 
 <style>
-  section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
+  header {
+    display: grid;
+    place-items: center;
+    height: 100dvh;
     color: var(--white);
-    border-radius: 1rem;
+    text-align: center;
+
 
     & div {
       position: absolute;
@@ -135,6 +131,14 @@ import Location from '../../icons/Location.astro';
           margin: 0;
         }
       }
+
     }
+  }
+  .location-icon{
+      display: inline-flex;
+      align-items: center;
+  }
+  .location-name{
+    color: var(--yellow-400);
   }
 </style>
