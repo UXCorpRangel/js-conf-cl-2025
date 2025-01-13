@@ -1,12 +1,25 @@
 ---
+
+import CallToAction from '@components/ui/CallToAction.astro'
+import { cta } from '@components/ui/Footer.astro'
 import Stars from '@components/ui/Stars.astro'
-import { Icon } from 'astro-icon/components';
+// Estos iconos son los que van arriba del h1, deberia ser un solo svg :p
+// import jsConfLogo from "../../../public/logo/logo conf2025.svg";
+// import favIcon from "../../../public/favicons/favicon.svg";
 ---
 
 <header>
   <div>
+    <!-- <div class="logo-container" >
+    <img src={favIcon.src} alt="Javascript icon" />
+    <img alt="JSConf Logo 2025" src={jsConfLogo.src} />
+    </div> -->
+    <!-- <img src={favIcon.src} alt="Javascript icon" />
+    <img alt="JSConf Logo 2025" src={jsConfLogo.src} /> -->
     <img alt="JSConf Logo" src="https://placehold.co/315x122" />
+
     <h1> <a class="location-icon" href="/"> <Icon name="location" /></a>  En <span class="location-name">Santiago</span> de Chile</h1>
+
     <article>
       <h2>La conferencia de tecnología más esperada del país</h2>
       <p>
@@ -14,6 +27,37 @@ import { Icon } from 'astro-icon/components';
         JavaScript
       </p>
     </article>
+
+    <div class="hero-cta">
+      {
+        cta.map(
+          (
+            { label, description, variant, descriptionWeight },
+            index: number
+          ) => (
+            <>
+              <CallToAction
+                callToActionDescription={description}
+                callToActionLabel={label}
+                callToActionUrl="#"
+                descriptionWeight={descriptionWeight}
+                variant={variant}
+              />
+              {index < cta.length - 1 && <span class="separator" />}
+            </>
+          )
+        )
+      }
+    </div>
+
+    <div class="hero-cta"></div>
+
+    <!--
+    Un div de 594x137?
+    Contains h3 and a placeholder for the scroll button
+    -->
+    <h3 class="scroll-prompt">El evento se acerca... Descúbrelo abajo.</h3>
+    <img alt="placeholder for scroll button" src="https://placehold.co/50x51" />
   </div>
   <Stars />
 </header>
@@ -26,9 +70,68 @@ import { Icon } from 'astro-icon/components';
     color: var(--white);
     text-align: center;
 
-    & img {
-      width: 100%;
-      max-width: 315px;
+
+    & div {
+      position: absolute;
+      text-align: center;
+
+      & img {
+        width: 100%;
+        max-width: 315px;
+        max-height: 122px;
+      }
+    }
+    .hero-cta {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100%;
+      gap: 1.5rem;
+      & .separator {
+        width: 1px;
+        background-color: var(--stone-700);
+        margin: 0 1.5rem;
+      }
+    }
+    /*
+  configure the logo container to be positioned absolutely
+  and centered horizontally
+  set margin bottom to 72px
+  set width to 315px
+  set height to 122px
+  set flex
+  flex direction to column
+  align items to center
+  justify content to center
+  maybe some gap
+*/
+    .scroll-prompt {
+      font-size: 32px;
+      color: #404040;
+    }
+    @media (width<= 834px) {
+      .scroll-prompt {
+        margin-left: 24px;
+        margin-right: 24px;
+        font-size: 24px;
+      }
+    }
+
+    @media (width <= 768px) {
+      & .hero-cta {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0 24px;
+        & .separator {
+          width: 100%;
+          height: 1px;
+          background-color: var(--stone-700);
+          margin: 0;
+        }
+      }
+
     }
   }
   .location-icon{
