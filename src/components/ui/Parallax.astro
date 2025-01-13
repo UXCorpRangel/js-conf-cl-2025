@@ -1,0 +1,64 @@
+---
+import ClickToScroll from './ClickToScroll.astro'
+import Countdown from './Countdown.astro';
+---
+
+<section class="parallax-container">
+  <div class="information">
+    <h2>La cuenta regresiva ha comenzado</h2>
+    <Countdown />
+  </div>
+  <ClickToScroll href="#" title="Haz scroll y explora lo que te espera" />
+  <img alt="Capa 01" class="parallax capa-1" src="/parallax/capa-01.png" />
+  <img alt="Capa 02" class="parallax capa-2" src="/parallax/capa-02.png" />
+  <img alt="Capa 03" class="parallax capa-3" src="/parallax/capa-03.png" />
+  <img alt="Capa 04" class="parallax capa-4" src="/parallax/capa-04.png" />
+</section>
+
+<style>
+  .parallax-container {
+    max-width: 1146px;
+    margin: auto;
+    padding-block: 250px 240px;
+    padding-inline: 16px;
+    text-align: center;
+    position: relative;
+
+    .information {
+      padding-bottom: 200px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-size: 48px;
+      font-weight: 800;
+    }
+
+    img {
+      position: absolute;
+      inset: 0;
+
+      &.capa-1,
+      &.capa-3,
+      &.capa-4 {
+        z-index: -1;
+      }
+
+      &.capa-2 {
+        z-index: 2;
+      }
+    }
+  }
+</style>
+
+<script>
+  import { ParallaxEffect } from '@scripts/parallax'
+
+  // eslint-disable-next-line no-new
+  new ParallaxEffect({
+    containerSelector: '.parallax-container', // Selector del contenedor
+    childsSelector: '.parallax', // Selector de los hijos (imágenes en este caso)
+    maxDisplacement: 50 // Desplazamiento máximo en píxeles
+  })
+</script>
