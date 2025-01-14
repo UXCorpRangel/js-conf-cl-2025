@@ -11,7 +11,7 @@ const { title, href } = Astro.props;
 <div class="click-to-scroll-wrapper">
   <h3>{title}</h3>
   <a href={href}>
-    <Icon name="chevron-down" />
+    <Icon name="chevron-down" size={50} />
   </a>
 </div>
 
@@ -20,23 +20,27 @@ const { title, href } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem 0;
+    gap: 8px;
+
+    @media (width >= 1200px) {
+      gap: 20px;
+    }
 
     & h3 {
-      font-size: 2rem;
+      font-size: 24px;
       font-weight: 600;
-      line-height: 1.2;
       text-align: center;
       text-wrap: pretty;
       color: #404040;
+      margin: 0;
 
-      margin-bottom: 2rem;
+      @media (width >= 1200px) {
+        font-size: 32px;
+      }
     }
 
-    & svg {
-      width: 50px;
-      height: 50px;
-      fill: var(--color-primary);
+    & a {
+      color: var(--yellow-500);
     }
   }
 </style>
