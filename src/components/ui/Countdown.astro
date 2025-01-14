@@ -73,7 +73,7 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
 <style>
   .countdown {
     width: 100%;
-    max-width: 694px;
+    max-width: 586px;
     height: auto;
     max-height: 135px;
 
@@ -91,6 +91,10 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
     background: rgba(12, 10, 9, 0.7);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
+
+    @media (width >= 1200px) {
+      max-width: 696px;
+    }
 
     & .counters-wrapper {
       display: none;
@@ -147,8 +151,6 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
 
   @media (width <= 1024px) {
     .countdown {
-      max-width: 80%;
-
       & .counters-wrapper {
         padding: 25px 41px;
         width: 100%;
@@ -175,11 +177,10 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
 
   @media (width <= 768px) {
     .countdown {
-      max-width: 90%;
+      width: 100%;
 
       & .counters-wrapper {
         padding: 16px 24px;
-        width: 100%;
 
         & .counter {
           & #days,
