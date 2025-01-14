@@ -1,6 +1,13 @@
 ---
+import type { ImageMetadata } from 'astro'
+import parallaxImages from '@data/parallax-images'
+import { Picture } from 'astro:assets'
 import ClickToScroll from './ClickToScroll.astro'
-import Countdown from './Countdown.astro';
+import Countdown from './Countdown.astro'
+
+const getImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/parallax/*.{jpeg,jpg,png}'
+);
 ---
 
 <section class="parallax-container">
@@ -9,10 +16,19 @@ import Countdown from './Countdown.astro';
     <Countdown />
   </div>
   <ClickToScroll href="#" title="Haz scroll y explora lo que te espera" />
-  <img alt="Capa 01" class="parallax capa-1" src="/parallax/capa-01.png" />
-  <img alt="Capa 02" class="parallax capa-2" src="/parallax/capa-02.png" />
-  <img alt="Capa 03" class="parallax capa-3" src="/parallax/capa-03.png" />
-  <img alt="Capa 04" class="parallax capa-4" src="/parallax/capa-04.png" />
+  {
+    parallaxImages.map(({ alt, src }, index) => (
+      <Picture
+        alt={alt}
+        class={`parallax capa-${index}`}
+        fetchpriority="low"
+        formats={['avif', 'webp']}
+        height={767}
+        src={getImages[src]()}
+        width={1146}
+      />
+    ))
+  }
 </section>
 
 <style>
@@ -39,13 +55,13 @@ import Countdown from './Countdown.astro';
       position: absolute;
       inset: 0;
 
-      &.capa-1,
-      &.capa-3,
-      &.capa-4 {
+      &.capa-0,
+      &.capa-2,
+      &.capa-3 {
         z-index: -1;
       }
 
-      &.capa-2 {
+      &.capa-1 {
         z-index: 2;
       }
     }
