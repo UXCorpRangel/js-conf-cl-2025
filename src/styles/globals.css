@@ -32,6 +32,7 @@ body {
   color: var(--white);
 
   scroll-behavior: smooth;
+  background-color: var(--black);
 }
 
 h1 {
