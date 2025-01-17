@@ -24,6 +24,12 @@
   --rounded-2xl: 1rem;
   --rounded-3xl: 1.5rem;
   --rounded-full: 9999px;
+
+  --radial-gradient: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 168, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 body {

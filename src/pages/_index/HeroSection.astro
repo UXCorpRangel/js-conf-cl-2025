@@ -1,129 +1,168 @@
 ---
-
 import CallToAction from '@components/ui/CallToAction.astro'
+import ClickToScroll from '@components/ui/ClickToScroll.astro'
 import { cta } from '@components/ui/Footer.astro'
 import Stars from '@components/ui/Stars.astro'
+import logo from '@images/assets/jsconf-chile-2025-logo.webp'
 import { Icon } from 'astro-icon/components'
-// Estos iconos son los que van arriba del h1, deberia ser un solo svg :p
-// import jsConfLogo from "../../../public/logo/logo conf2025.svg";
-// import favIcon from "../../../public/favicons/favicon.svg";
+import { Picture } from 'astro:assets';
 ---
 
 <header>
-  <div>
-    <!-- <div class="logo-container" >
-    <img src={favIcon.src} alt="Javascript icon" />
-    <img alt="JSConf Logo 2025" src={jsConfLogo.src} />
-    </div> -->
-    <!-- <img src={favIcon.src} alt="Javascript icon" />
-    <img alt="JSConf Logo 2025" src={jsConfLogo.src} /> -->
-    <img alt="JSConf Logo" src="https://placehold.co/315x122" />
+  <Picture
+    alt="JSConf Chile 2025 Logo"
+    class="logo"
+    fetchpriority="high"
+    formats={['avif', 'webp']}
+    height={122}
+    src={logo}
+    width={315}
+  />
 
-    <h1> <a class="location-icon" href="/"> <Icon name="location" /></a>  En <span class="location-name">Santiago</span> de Chile</h1>
+  <h1 class="hero-title">
+    <Icon name="location" />
+    <span>En <span class="location-name">Santiago</span> de Chile</span>
+  </h1>
 
-    <article>
-      <h2>La conferencia de tecnología más esperada del país</h2>
-      <p>
-        Aprende de expertos, amplía tu red y descubre las últimas tendencias en
-        JavaScript
-      </p>
-    </article>
+  <article class="hero-description">
+    <h2>La conferencia de tecnología más esperada del país</h2>
+    <p>
+      Aprende de expertos, amplía tu red y descubre las últimas tendencias en
+      JavaScript
+    </p>
+  </article>
 
-    <div class="hero-cta">
-      {
-        cta.map(
-          (
-            { label, description, variant, descriptionWeight },
-            index: number
-          ) => (
-            <>
-              <CallToAction
-                callToActionDescription={description}
-                callToActionLabel={label}
-                callToActionUrl="#"
-                descriptionWeight={descriptionWeight}
-                variant={variant}
-              />
-              {index < cta.length - 1 && <span class="separator" />}
-            </>
-          )
+  <div class="hero-cta">
+    {
+      cta.map(
+        ({ label, description, variant, descriptionWeight }, index: number) => (
+          <>
+            <CallToAction
+              callToActionDescription={description}
+              callToActionLabel={label}
+              callToActionUrl="#"
+              descriptionWeight={descriptionWeight}
+              variant={variant}
+            />
+            {index < cta.length - 1 && <span class="separator" />}
+          </>
         )
-      }
-    </div>
-
-    <div class="hero-cta"></div>
-
-    <!--
-    Un div de 594x137?
-    Contains h3 and a placeholder for the scroll button
-    -->
-    <h3 class="scroll-prompt">El evento se acerca... Descúbrelo abajo.</h3>
-    <img alt="placeholder for scroll button" src="https://placehold.co/50x51" />
+      )
+    }
   </div>
+
+  <div>
+    <span class="radial-gradient"></span>
+  </div>
+  <ClickToScroll href="#" title="El evento se acerca… Descúbrelo abajo" />
   <Stars />
 </header>
-
 <style>
   header {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     place-items: center;
-    height: 100dvh;
-    color: var(--white);
-    text-align: center;
+    min-height: 100dvh;
+    padding: 108px 72px 0;
+    position: relative;
 
-    & div {
-      position: absolute;
-      text-align: center;
+    @media (width <= 375px) {
+      padding: 48px 24px 0;
+    }
 
-      & img {
-        width: 100%;
-        max-width: 315px;
-        max-height: 122px;
+    & .hero-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0;
+      padding-top: 72px;
+
+      & .location-name {
+        color: var(--yellow-400);
       }
     }
-    .hero-cta {
-      position: relative;
+
+    & .hero-description {
+      text-align: center;
+      padding-top: 48px;
+
+      & h2 {
+        margin: 0;
+      }
+
+      & p {
+        margin: 0;
+        color: var(--amber-400);
+        font-weight: 400;
+        font-size: 24px;
+      }
+    }
+
+    & .hero-cta {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
       height: 100%;
+      width: 100%;
       gap: 1.5rem;
+      padding-block: 72px;
       & .separator {
         width: 1px;
         background-color: var(--stone-700);
         margin: 0 1.5rem;
       }
     }
-    /*
-  configure the logo container to be positioned absolutely
-  and centered horizontally
-  set margin bottom to 72px
-  set width to 315px
-  set height to 122px
-  set flex
-  flex direction to column
-  align items to center
-  justify content to center
-  maybe some gap
-*/
-    .scroll-prompt {
-      font-size: 32px;
-      color: #404040;
-    }
-    @media (width<= 834px) {
-      .scroll-prompt {
-        margin-left: 24px;
-        margin-right: 24px;
-        font-size: 24px;
+
+    & .radial-gradient {
+      position: absolute;
+      width: 80%;
+      height: 100%;
+      aspect-ratio: 1;
+      top: 8px;
+      left: calc(50% - 40%);
+      background: var(--radial-gradient);
+      z-index: -1;
+
+      @media (width <= 1200px) {
+        height: 80%;
+      }
+
+      @media (width <= 960px) {
+        height: 60%;
+      }
+
+      @media (width <= 600px) {
+        height: 30%;
       }
     }
+  }
 
-    @media (width <= 768px) {
+  @media (width <= 1024px) {
+    header {
+      padding: 50px 48px 0;
+
+      & .hero-title {
+        flex-direction: column;
+        padding-top: 48px;
+        font-size: 32px;
+        text-align: center;
+        text-wrap: balance;
+      }
+
+      & .hero-description {
+        padding-top: 24px;
+        & h2 {
+          font-size: 24px;
+        }
+        & p {
+          font-size: 16px;
+          padding-top: 12px;
+        }
+      }
+
       & .hero-cta {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        padding: 0 24px;
+        align-items: center;
         & .separator {
           width: 100%;
           height: 1px;
@@ -131,14 +170,6 @@ import { Icon } from 'astro-icon/components'
           margin: 0;
         }
       }
-
     }
-  }
-  .location-icon{
-      display: inline-flex;
-      align-items: center;
-  }
-  .location-name{
-    color: var(--yellow-400);
   }
 </style>
