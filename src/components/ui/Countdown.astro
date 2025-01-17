@@ -53,7 +53,7 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
 
       comingSoonText.classList.remove('is-hide')
       countersWrapper.classList.remove('is-show')
-
+    } else {
       const getDays = Math.floor(dateGap / (1000 * 60 * 60 * 24))
       const getHours = Math.floor(
         (dateGap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
