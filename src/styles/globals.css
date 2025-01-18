@@ -32,12 +32,14 @@
   );
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   font-size: 16px;
   font-family: "Onest Variable", sans-serif;
   color: var(--white);
-
-  scroll-behavior: smooth;
   background-color: var(--black);
 }
 
