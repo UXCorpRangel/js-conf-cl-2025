@@ -10,12 +10,11 @@ const getImages = import.meta.glob<{ default: ImageMetadata }>(
 );
 ---
 
-<section class="parallax-container">
+<section class="parallax-container" id="cuenta-regresiva">
   <div class="information">
-    <h2>La cuenta regresiva ha comenzado</h2>
+    <h2>La cuenta regresiva comenzará pronto</h2>
     <Countdown />
   </div>
-  <ClickToScroll href="#" title="Haz scroll y explora lo que te espera" />
   <div class="layers">
     {
       parallaxImages.map(({ alt, src }, index) => (
@@ -30,8 +29,11 @@ const getImages = import.meta.glob<{ default: ImageMetadata }>(
         />
       ))
     }
-
   </div>
+  <ClickToScroll
+    href="#informacion"
+    title="Haz scroll y explora lo que te espera"
+  />
 </section>
 
 <style>
@@ -59,7 +61,7 @@ const getImages = import.meta.glob<{ default: ImageMetadata }>(
       @media (width >= 1200px) {
         position: relative;
         z-index: 1;
-        padding-bottom: 260px;
+        padding-bottom: 360px;
       }
 
       h2 {
@@ -102,15 +104,17 @@ const getImages = import.meta.glob<{ default: ImageMetadata }>(
 </style>
 
 <script>
-  const isDesktop = window.matchMedia('(min-width: 1200px)').matches
+const isDesktop = window.matchMedia('(min-width: 1200px)').matches
 
-  if (isDesktop) {
-    import('@scripts/parallax').then(({ ParallaxEffect }) => {
+if (isDesktop) {
+  import('@scripts/parallax')
+    .then(({ ParallaxEffect }) => {
       return new ParallaxEffect({
         containerSelector: '.parallax-container',
         childsSelector: '.parallax',
         maxDisplacement: 50
       })
-    }).catch((err) => console.error(err))
-  }
+    })
+    .catch((err) => console.error(err))
+}
 </script>
