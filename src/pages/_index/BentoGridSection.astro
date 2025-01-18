@@ -1,7 +1,15 @@
 ---
-import Bento from '@components/Bento.astro'
+import Bento from '@components/Bento.astro';
 ---
 
-<section id="informacion" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+<section class="bento-grid">
   <Bento />
 </section>
+
+<style>
+  .bento-grid {
+    width: 100%;
+    max-width: 1280px;
+    margin: 48px auto;
+  }
+</style>
