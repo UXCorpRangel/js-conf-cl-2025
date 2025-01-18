@@ -29,41 +29,42 @@
     </div>
   </div>
 
-<script is:inline>
-const countDownDate = new Date('Jan 11, 2025 02:00:00').getTime()
+<script>
+const countDownDate = new Date('Dec 05, 2024 09:00:00').getTime()
 
-const comingSoonText = document.querySelector('.coming-soon')
-const countersWrapper = document.querySelector('.counters-wrapper')
+const comingSoonText = document.querySelector('.coming-soon') as HTMLParagraphElement
+const countersWrapper = document.querySelector('.counters-wrapper') as HTMLDivElement
+
+const days = document.getElementById('days') as HTMLSpanElement
+const hours = document.getElementById('hours') as HTMLSpanElement
+const minutes = document.getElementById('minutes') as HTMLSpanElement
+const seconds = document.getElementById('seconds') as HTMLSpanElement
 
 if (!isNaN(countDownDate) && countDownDate > Date.now()) {
-  comingSoonText.style.display = 'none'
-  countersWrapper.style.display = 'flex'
+  comingSoonText.classList.add('is-hide')
+  countersWrapper.classList.add('is-show')
 
   const x = setInterval(() => {
     const now = new Date().getTime()
-    const distance = countDownDate - now
+    const dateGap = countDownDate - now
 
-    if (distance < 0) {
-      clearInterval(x)
+    if (dateGap < 0) {
+      clearInterval(Number(x))
 
-      comingSoonText.style.display = 'block'
-      countersWrapper.style.display = 'none'
+      comingSoonText.classList.remove('is-hide')
+      countersWrapper.classList.remove('is-show')
     } else {
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      const getDays = Math.floor(dateGap / (1000 * 60 * 60 * 24))
+      const getHours = Math.floor(
+        (dateGap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       )
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+      const getMinutes = Math.floor((dateGap % (1000 * 60 * 60)) / (1000 * 60))
+      const getSeconds = Math.floor((dateGap % (1000 * 60)) / 1000)
 
-      document.getElementById('days').innerHTML =
-          days < 10 ? '0' + days : days
-      document.getElementById('hours').innerHTML =
-          hours < 10 ? '0' + hours : hours
-      document.getElementById('minutes').innerHTML =
-          minutes < 10 ? '0' + minutes : minutes
-      document.getElementById('seconds').innerHTML =
-          seconds < 10 ? '0' + seconds : seconds
+      days.textContent = String(getDays < 10 ? `0${getDays}` : getDays)
+      hours.textContent = String(getHours < 10 ? `0${getHours}` : getHours)
+      minutes.textContent = String(getMinutes < 10 ? `0${getMinutes}` : getMinutes)
+      seconds.textContent = String(getSeconds < 10 ? `0${getSeconds}` : getSeconds)
     }
   }, 1000)
 }
@@ -72,7 +73,7 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
 <style>
   .countdown {
     width: 100%;
-    max-width: 694px;
+    max-width: 586px;
     height: auto;
     max-height: 135px;
 
@@ -91,11 +92,19 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
 
+    @media (width >= 1200px) {
+      max-width: 696px;
+    }
+
     & .counters-wrapper {
       display: none;
       width: 100%;
       padding: 24px 32px;
       justify-content: space-around;
+
+      &.is-show {
+        display: flex;
+      }
 
       & .counter {
         display: flex;
@@ -133,13 +142,15 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
       color: var(--white);
       text-align: center;
       margin: 0;
+
+      &.is-hide {
+        display: none;
+      }
     }
   }
 
   @media (width <= 1024px) {
     .countdown {
-      max-width: 80%;
-
       & .counters-wrapper {
         padding: 25px 41px;
         width: 100%;
@@ -166,11 +177,10 @@ if (!isNaN(countDownDate) && countDownDate > Date.now()) {
 
   @media (width <= 768px) {
     .countdown {
-      max-width: 90%;
+      width: 100%;
 
       & .counters-wrapper {
         padding: 16px 24px;
-        width: 100%;
 
         & .counter {
           & #days,

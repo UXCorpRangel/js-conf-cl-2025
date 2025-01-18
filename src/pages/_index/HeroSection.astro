@@ -1,41 +1,175 @@
 ---
-import Stars from '@components/ui/Stars.astro';
+import CallToAction from '@components/ui/CallToAction.astro'
+import ClickToScroll from '@components/ui/ClickToScroll.astro'
+import { cta } from '@components/ui/Footer.astro'
+import Stars from '@components/ui/Stars.astro'
+import logo from '@images/assets/jsconf-chile-2025-logo.webp'
+import { Icon } from 'astro-icon/components'
+import { Picture } from 'astro:assets';
 ---
 
-<section>
-  <div>
-    <img alt="JSConf Logo" src="https://placehold.co/315x122" />
-    <h1>🚩 En Santiago de Chile</h1>
-    <article>
-      <h2>La conferencia de tecnología más esperada del país</h2>
-      <p>
-        Aprende de expertos, amplía tu red y descubre las últimas tendencias en
-        JavaScript
-      </p>
-    </article>
-  </div>
-  <Stars />
-</section>
+<header>
+  <Picture
+    alt="JSConf Chile 2025 Logo"
+    class="logo"
+    fetchpriority="high"
+    formats={['avif', 'webp']}
+    height={122}
+    src={logo}
+    width={315}
+  />
 
+  <h1 class="hero-title">
+    <Icon name="location" />
+    <span>En <span class="location-name">Santiago</span> de Chile</span>
+  </h1>
+
+  <article class="hero-description">
+    <h2>La conferencia de tecnología más esperada del país</h2>
+    <p>
+      Aprende de expertos, amplía tu red y descubre las últimas tendencias en
+      JavaScript
+    </p>
+  </article>
+
+  <div class="hero-cta">
+    {
+      cta.map(
+        ({ label, description, variant, descriptionWeight }, index: number) => (
+          <>
+            <CallToAction
+              callToActionDescription={description}
+              callToActionLabel={label}
+              callToActionUrl="#"
+              descriptionWeight={descriptionWeight}
+              variant={variant}
+            />
+            {index < cta.length - 1 && <span class="separator" />}
+          </>
+        )
+      )
+    }
+  </div>
+
+  <div>
+    <span class="radial-gradient"></span>
+  </div>
+  <ClickToScroll href="#cuenta-regresiva" title="El evento se acerca… Descúbrelo abajo" />
+  <Stars />
+</header>
 <style>
-  section {
-    min-height: 100vh;
+  header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
-    color: var(--white);
-    border-radius: 1rem;
+    place-items: center;
+    min-height: 100dvh;
+    padding: 108px 72px 0;
+    position: relative;
 
-    & div {
-      position: absolute;
+    @media (width <= 375px) {
+      padding: 48px 24px 0;
+    }
+
+    & .hero-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0;
+      padding-top: 72px;
+
+      & .location-name {
+        color: var(--yellow-400);
+      }
+    }
+
+    & .hero-description {
       text-align: center;
+      padding-top: 48px;
 
-      & img {
-        width: 100%;
-        max-width: 315px;
+      & h2 {
+        margin: 0;
+      }
+
+      & p {
+        margin: 0;
+        color: var(--amber-400);
+        font-weight: 400;
+        font-size: 24px;
+      }
+    }
+
+    & .hero-cta {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      max-width: 1280px;
+      gap: 1.5rem;
+      padding-block: 72px;
+      & .separator {
+        width: 1px;
+        background-color: var(--stone-700);
+        margin: 0 1.5rem;
+      }
+    }
+
+    & .radial-gradient {
+      position: absolute;
+      width: 80%;
+      height: 100%;
+      aspect-ratio: 1;
+      top: 8px;
+      left: calc(50% - 40%);
+      background: var(--radial-gradient);
+      z-index: -1;
+
+      @media (width <= 1200px) {
+        height: 80%;
+      }
+
+      @media (width <= 960px) {
+        height: 60%;
+      }
+
+      @media (width <= 600px) {
+        height: 30%;
+      }
+    }
+  }
+
+  @media (width <= 1024px) {
+    header {
+      padding: 50px 48px 0;
+
+      & .hero-title {
+        flex-direction: column;
+        padding-top: 48px;
+        font-size: 32px;
+        text-align: center;
+        text-wrap: balance;
+      }
+
+      & .hero-description {
+        padding-top: 24px;
+        & h2 {
+          font-size: 24px;
+        }
+        & p {
+          font-size: 16px;
+          padding-top: 12px;
+        }
+      }
+
+      & .hero-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & .separator {
+          width: 100%;
+          height: 1px;
+          background-color: var(--stone-700);
+          margin: 0;
+        }
       }
     }
   }

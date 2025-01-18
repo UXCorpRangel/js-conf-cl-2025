@@ -25,15 +25,49 @@
   --rounded-3xl: 1.5rem;
   --rounded-full: 9999px;
 
-  --gradient-gold: linear-gradient(
-    266.15deg,
-    #2a2401 -18.86%,
-    #9a8025 39.58%,
-    #ede060 99.61%
+  --radial-gradient: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 168, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
   );
+}
+
+* {
+  scroll-behavior: smooth;
 }
 
 body {
   font-size: 16px;
   font-family: "Onest Variable", sans-serif;
+  color: var(--white);
+  background-color: var(--black);
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 32px;
+}
+
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p {
+  font-size: 20px;
 }

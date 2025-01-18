@@ -10,7 +10,8 @@
       "@scripts/*": ["src/scripts/*"],
       "@sections/*": ["src/pages/_*"],
       "@styles/*": ["src/styles/*"],
-      "@ui/*": ["src/components/ui/*"]
+      "@ui/*": ["src/components/ui/*"],
+      "@images/*": ["src/images/*"]
     },
     "jsx": "react-jsx"
   }
