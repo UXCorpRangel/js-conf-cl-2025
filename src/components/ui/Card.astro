@@ -9,7 +9,7 @@ const { title, body, horizontal } = Astro.props
 ---
 
 <div class="info-card" class:list={horizontal ? 'horizontal' : ''}>
-  <h2>{title}</h2>
+  <h3>{title}</h3>
   <p>{body}</p>
 </div>
 <style>
@@ -17,11 +17,16 @@ const { title, body, horizontal } = Astro.props
     background-color: #0C0A09;
     border: 1px solid #292524;
     border-radius: 0.5rem;
-    padding: 1.5rem;
+    padding: 24px;
     gap: 1rem;
 
+    & h3 {
+      margin: 0 0 16px;
+    }
+
     & p {
-      color: #78716C;
+      margin: 0;
+      color: var(--stone-500);
     }
 
     &.horizontal {
