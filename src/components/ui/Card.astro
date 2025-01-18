@@ -5,16 +5,16 @@ interface Props {
   horizontal?: boolean
 }
 
-const { title, body, horizontal } = Astro.props
+const { title, body, horizontal } = Astro.props;
 ---
 
-<div class="info-card" class:list={horizontal ? 'horizontal' : ''}>
+<div class={horizontal ? 'info-card-horizontal' : 'info-card'}>
   <h3>{title}</h3>
   <p>{body}</p>
 </div>
 <style>
   .info-card {
-    background-color: #0C0A09;
+    background-color: #0c0a09;
     border: 1px solid #292524;
     border-radius: 0.5rem;
     padding: 24px;
@@ -28,9 +28,33 @@ const { title, body, horizontal } = Astro.props
       margin: 0;
       color: var(--stone-500);
     }
+  }
 
-    &.horizontal {
-      display: flex;
+  .info-card-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0a09;
+    border: 1px solid #292524;
+    border-radius: 0.5rem;
+    padding: 24px;
+    gap: 72px;
+
+    & h3 {
+      margin: 0;
+      text-wrap: nowrap;
+    }
+
+    & p {
+      margin: 0;
+      color: var(--stone-500);
+    }
+  }
+
+  @media (width <= 1024px) {
+    .info-card-horizontal {
+      flex-direction: column;
+      gap: 24px;
     }
   }
 </style>
