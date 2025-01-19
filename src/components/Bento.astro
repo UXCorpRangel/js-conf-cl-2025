@@ -1,8 +1,8 @@
 ---
 import Card from '@components/ui/Card.astro'
-import jsc2023 from '@images/assets/jsconf-chile-2023-dia-2-005.webp'
-import jsc2024 from '@images/assets/jsconf-dia-2-evento-50.webp'
-import { Image } from 'astro:assets'
+import jscDia2Evento from '@images/assets/jsconf-chile-2024-dia-2-evento.png'
+import jscDia2 from '@images/assets/jsconf-chile-2024-dia-2.png'
+import { Picture } from 'astro:assets'
 
 const bento1 = [
   {
@@ -55,24 +55,29 @@ const bento2 = [
       </article>
     ))
   }
-  <figure class="bento1-image">
-    <Image alt="JSConf Chile 2024" height={446} src={jsc2024} width={609} />
-    <figcaption>Imagen de la JSConf Chile 2024 comunidad reunida</figcaption>
-  </figure>
+  <div class="bento1-image">
+    <Picture
+      alt="JSConf Chile 2024 Día 2 - Evento"
+      fetchpriority="low"
+      formats={['avif', 'webp']}
+      height={446}
+      src={jscDia2Evento}
+      width={609}
+    />
+  </div>
 </section>
 
 <section class="bento-2">
-  <figure class="bento2-image">
-    <Image
-      alt="JSConf Chile 2024 acreditación del evento"
-      height={362}
-      src={jsc2023}
-      width={738}
+  <div class="bento2-image">
+    <Picture
+      alt="JSConf Chile 2024 Día 2 - Acreditación del Evento"
+      fetchpriority="low"
+      formats={['avif', 'webp']}
+      height={508}
+      src={jscDia2}
+      width={408}
     />
-    <figcaption>
-      Imagen de la JSConf Chile 2024 acreditación de evento
-    </figcaption>
-  </figure>
+  </div>
   {
     bento2.map(({ id, title, description }) => (
       <article class={`bento2-card${id}`}>
