@@ -71,3 +71,8 @@ h4 {
 p {
   font-size: 20px;
 }
+
+a {
+  color: var(--white);
+  text-decoration: none;
+}
