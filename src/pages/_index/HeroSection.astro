@@ -3,9 +3,9 @@ import CallToAction from '@components/ui/CallToAction.astro'
 import ClickToScroll from '@components/ui/ClickToScroll.astro'
 import { cta } from '@components/ui/Footer.astro'
 import Stars from '@components/ui/Stars.astro'
-import logo from '@images/assets/jsconf-chile-2025-logo.webp'
+import logo from '@images/assets/jsconf-chile-2025-logo.png'
 import { Icon } from 'astro-icon/components'
-import { Picture } from 'astro:assets';
+import { Picture } from 'astro:assets'
 ---
 
 <header>
@@ -15,6 +15,7 @@ import { Picture } from 'astro:assets';
     fetchpriority="high"
     formats={['avif', 'webp']}
     height={122}
+    loading="eager"
     src={logo}
     width={315}
   />
