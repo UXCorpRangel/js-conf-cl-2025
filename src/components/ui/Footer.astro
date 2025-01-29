@@ -1,10 +1,13 @@
 ---
 import type { ButtonVariant, FontWeight } from '@contracts'
+import badge from '../../../public/media/uxcorprangel-badge.svg'
+
 import CallToAction from './CallToAction.astro'
 
 interface CtaItem {
   label: string
   description: string
+  url: string
   variant: ButtonVariant
   descriptionWeight: FontWeight
 }
@@ -13,18 +16,21 @@ export const cta: CtaItem[] = [
   {
     label: 'Postula tu charla',
     description: 'Comparte tus ideas con la comunidad de desarrolladores',
+    url: 'https://tally.so/r/me9dNx',
     variant: 'outlined',
     descriptionWeight: 'normal'
   },
   {
     label: 'Hazte Sponsor',
     description: '¡Destaca tu marca en el mayor evento tecnológico de Chile!',
+    url: 'https://tally.so/r/nGXXOp',
     variant: 'contained',
     descriptionWeight: 'bold'
   },
   {
     label: 'Ver antiguas ediciones',
     description: 'Mira lo que ya hemos hecho en los años anteriores',
+    url: 'https://gallery.jsconf.cl/',
     variant: 'outlined',
     descriptionWeight: 'normal'
   }
@@ -39,12 +45,15 @@ export const cta: CtaItem[] = [
   <div class="footer-cta">
     {
       cta.map(
-        ({ label, description, variant, descriptionWeight }, index: number) => (
+        (
+          { label, description, url, variant, descriptionWeight },
+          index: number
+        ) => (
           <>
             <CallToAction
               callToActionDescription={description}
               callToActionLabel={label}
-              callToActionUrl="#"
+              callToActionUrl={url}
               descriptionWeight={descriptionWeight}
               variant={variant}
             />
@@ -54,9 +63,17 @@ export const cta: CtaItem[] = [
       )
     }
   </div>
+
   <div>
     <span class="radial-gradient"></span>
   </div>
+  <a
+    class="badge"
+    href="https://uxcorprangel.github.io/"
+    rel="noopener noreferrer"
+    target="_blank"
+  ><img alt="UXCorp" src={badge.src} width="300" />
+  </a>
 </footer>
 
 <style>
@@ -64,10 +81,10 @@ export const cta: CtaItem[] = [
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 3.3rem;
     text-wrap: pretty;
-    padding: 112px 62px 0;
-    padding-block-end: 100px;
+    padding: 112px 62px 40px;
     position: relative;
     & .footer-header {
       display: flex;
@@ -129,7 +146,7 @@ export const cta: CtaItem[] = [
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 0 24px 86px;
+        padding: 0 24px;
         width: 100%;
         & .separator {
           width: 100%;
@@ -137,6 +154,10 @@ export const cta: CtaItem[] = [
           background-color: var(--stone-700);
           margin: 0;
         }
+      }
+
+      & .badge {
+        padding: 40px 0;
       }
     }
   }
