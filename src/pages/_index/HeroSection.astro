@@ -36,12 +36,12 @@ import { Picture } from 'astro:assets'
   <div class="hero-cta">
     {
       cta.map(
-        ({ label, description, variant, descriptionWeight }, index: number) => (
+        ({ label, description, url, variant, descriptionWeight }, index: number) => (
           <>
             <CallToAction
               callToActionDescription={description}
               callToActionLabel={label}
-              callToActionUrl="#"
+              callToActionUrl={url}
               descriptionWeight={descriptionWeight}
               variant={variant}
             />
@@ -55,7 +55,10 @@ import { Picture } from 'astro:assets'
   <div>
     <span class="radial-gradient"></span>
   </div>
-  <ClickToScroll href="#cuenta-regresiva" title="El evento se acerca… Descúbrelo abajo" />
+  <ClickToScroll
+    href="#cuenta-regresiva"
+    title="El evento se acerca… Descúbrelo abajo"
+  />
   <Stars />
 </header>
 <style>
