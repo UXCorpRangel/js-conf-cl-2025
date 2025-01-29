@@ -21,4 +21,16 @@ import Slider from '@components/ui/Slider.astro';
     margin: 48px auto;
     padding-inline: 68px;
   }
+
+  @media (width<= 1024px) {
+    .slider-container {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (width<= 768px) {
+    .slider-container {
+      padding-inline: 24px;
+    }
+  }
 </style>
