@@ -10,7 +10,10 @@ const { title, body, horizontal } = Astro.props;
 
 <div class={horizontal ? 'info-card-horizontal' : 'info-card'}>
   <h3>{title}</h3>
-  <p>{body}</p>
+  <div class="info-card-content">
+    <p>{body}</p>
+    <slot />
+  </div>
 </div>
 <style>
   .info-card {
@@ -24,9 +27,15 @@ const { title, body, horizontal } = Astro.props;
       margin: 0 0 16px;
     }
 
-    & p {
-      margin: 0;
-      color: var(--stone-500);
+    & .info-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      & p {
+        margin: 0;
+        color: var(--stone-500);
+      }
     }
   }
 
@@ -45,9 +54,15 @@ const { title, body, horizontal } = Astro.props;
       text-wrap: nowrap;
     }
 
-    & p {
-      margin: 0;
-      color: var(--stone-500);
+    & .info-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      & p {
+        margin: 0;
+        color: var(--stone-500);
+      }
     }
   }
 
