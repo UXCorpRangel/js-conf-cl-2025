@@ -6,10 +6,17 @@ import Slider from '@components/ui/Slider.astro';
 <section class="slider-container">
   <Slider />
   <Card
-    body="Crear un escenario donde las personas, el conocimiento y la tecnología se encuentren para construir un futuro más inclusivo, innovador y conectado. En JSConf Chile, no solo se trata de JavaScript, se trata de lo que podemos lograr juntos"
+    body="Crear un escenario donde las personas, el conocimiento y la tecnología se encuentren para construir un futuro más inclusivo, innovador y conectado. En JSConf Chile, no solo se trata de JavaScript, se trata de lo que podemos lograr juntos."
     horizontal
     title="Nuestro propósito"
-  />
+  >
+    <a
+      href="https://legal.jsconf.cl/politica_de_privacidad/"
+      rel="noopener noreferrer"
+      target="_blank"
+    >Ver política de privacidad
+    </a>
+  </Card>
 </section>
 <style>
   .slider-container {
@@ -20,6 +27,11 @@ import Slider from '@components/ui/Slider.astro';
     max-width: 1280px;
     margin: 48px auto;
     padding-inline: 68px;
+
+    & a {
+      color: var(--yellow-500);
+      text-decoration: underline;
+    }
   }
 
   @media (width<= 1024px) {
