@@ -1,6 +1,5 @@
 ---
 import type { ButtonVariant, FontWeight } from '@contracts'
-import badge from '../../../public/media/uxcorprangel-badge.svg'
 
 import CallToAction from './CallToAction.astro'
 
@@ -72,7 +71,16 @@ export const cta: CtaItem[] = [
     href="https://uxcorprangel.github.io/"
     rel="noopener noreferrer"
     target="_blank"
-  ><img alt="UXCorp" src={badge.src} width="300" />
+  >
+    <img
+      alt="Badge de UXCorpRangel"
+      decoding="async"
+      fetchpriority="low"
+      height="59"
+      loading="lazy"
+      src="/images/uxcorprangel-badge.svg"
+      width="303"
+    />
   </a>
 </footer>
 
