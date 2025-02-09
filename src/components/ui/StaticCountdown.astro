@@ -1,0 +1,55 @@
+<div class="countdown">
+  <p class="coming-soon">Octubre 2025</p>
+</div>
+
+<style>
+  .countdown {
+    width: 100%;
+    max-width: 586px;
+    height: auto;
+    max-height: 135px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+    border-radius: var(--rounded-md);
+    outline: 1px solid var(--stone-700);
+
+    color: var(--white);
+
+    background: rgba(12, 10, 9, 0.7);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+
+    @media (width >= 1200px) {
+      max-width: 696px;
+    }
+
+    & .coming-soon {
+      font-family: "Inconsolata Variable", monospace;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  @media (width <= 1024px) {
+    .coming-soon {
+      font-size: 48px;
+    }
+  }
+
+  @media (width <= 768px) {
+    .countdown {
+      width: 100%;
+
+      & .coming-soon {
+        font-size: 32px;
+      }
+    }
+  }
+</style>
