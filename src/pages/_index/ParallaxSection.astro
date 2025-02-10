@@ -2,7 +2,7 @@
 import type { ImageMetadata } from 'astro'
 import parallaxImages from '@data/parallax-images'
 import ClickToScroll from '@ui/ClickToScroll.astro'
-import Countdown from '@ui/Countdown.astro'
+import StaticCountdown from '@ui/StaticCountdown.astro'
 import { Picture } from 'astro:assets'
 
 const getImages = import.meta.glob<{ default: ImageMetadata }>(
@@ -13,7 +13,7 @@ const getImages = import.meta.glob<{ default: ImageMetadata }>(
 <section class="parallax-container" id="cuenta-regresiva">
   <div class="information">
     <h2>La cuenta regresiva comenzará pronto</h2>
-    <Countdown />
+    <StaticCountdown />
   </div>
   <div class="layers">
     {
