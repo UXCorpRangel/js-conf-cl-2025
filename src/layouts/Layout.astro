@@ -11,6 +11,8 @@ const { options } = Astro.props
 ---
 
 <Base options={options}>
+  <slot name="social-media" />
+
   <slot />
   <Footer />
 </Base>
