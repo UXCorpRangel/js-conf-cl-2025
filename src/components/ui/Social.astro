@@ -1,6 +1,16 @@
 ---
 import { Icon } from 'astro-icon/components'
+
+const socialLinks = [
+  { name: 'E-mail', url: 'contacto@jsconf.cl' },
+  { name: 'Linkedin', url: 'https://www.linkedin.com/company/jsconf-chile/' },
+  { name: 'Instagram', url: 'https://www.instagram.com/jsconf.cl/' },
+  { name: 'Facebook', url: 'https://www.facebook.com/jsconfcl' },
+  { name: 'X', url: 'https://twitter.com/jsconfcl' },
+  { name: 'GitHub', url: 'https://github.com/jsconfcl' }
+];
 ---
+
 <div class="circle-menu">
   <div class="overlay"></div>
   <div class="menu circle">
@@ -11,51 +21,39 @@ import { Icon } from 'astro-icon/components'
     </div>
   </div>
 
-  <span class="circle">
-    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
-      <Icon name="e-mail" size={56} />
-    </a>
-  </span>
+  {
+    socialLinks.map(({ name, url }) => {
+      const href = url.includes('@') ? `mailto:${url}` : url
 
-  <span class="circle">
-    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
-      <Icon name="linkedin" size={56} />
-    </a>
-  </span>
-
-  <span class="circle">
-    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
-      <Icon name="instagram" size={56} />
-    </a>
-  </span>
-
-  <span class="circle">
-    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
-      <Icon name="facebook" size={56} />
-    </a>
-  </span>
-
-  <span class="circle">
-    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
-      <Icon name="x" size={56} />
-    </a>
-  </span>
-
-  <span class="circle">
-    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
-      <Icon name="github" size={56} />
-    </a>
-  </span>
+      return (
+        <span class="circle">
+          <a
+            aria-label={name}
+            class="social-link"
+            href={href}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Icon name={name.toLowerCase()} size={56} />
+          </a>
+        </span>
+      )
+    })
+  }
 </div>
 
 <script>
-const menu = document.querySelector<HTMLDivElement>('.circle-menu')
-const items = menu?.querySelectorAll<HTMLSpanElement>('span.circle') ?? []
+const menu = document.querySelector('.circle-menu') as HTMLDivElement
+const items = menu?.querySelectorAll('span.circle')
 
 menu?.style?.setProperty('--max-items', `${items.length}`)
 
-document.querySelector('.menu')?.addEventListener('click', () => menu?.classList?.toggle('open'))
-items.forEach((el, index) => el.style.setProperty('--item', `${index}`))
+document
+  .querySelector('.menu')
+  ?.addEventListener('click', () => menu?.classList?.toggle('open'))
+items.forEach((el, index) =>
+  (el as HTMLElement).style.setProperty('--item', `${index}`)
+)
 </script>
 
 <style>
@@ -90,7 +88,7 @@ items.forEach((el, index) => el.style.setProperty('--item', `${index}`))
 
     .circle {
       border-radius: 50%;
-      box-shadow: 0 6px 50px 0 #FBBF2480; /* Nuevo valor de brillo */
+      box-shadow: 0 6px 50px 0 #fbbf2480; /* Nuevo valor de brillo */
     }
 
     .menu {
@@ -102,7 +100,9 @@ items.forEach((el, index) => el.style.setProperty('--item', `${index}`))
       height: var(--menu-size);
       color: var(--black);
       background-color: var(--menu-color-bg);
-      transition: scale 0.5s, background 0.3s;
+      transition:
+        scale 0.5s,
+        background 0.3s;
       position: absolute;
       z-index: 3;
 
@@ -117,7 +117,9 @@ items.forEach((el, index) => el.style.setProperty('--item', `${index}`))
           width: 100%;
           height: 5px;
           background: currentcolor;
-          transition: transform 0.3s, color 0.3s;
+          transition:
+            transform 0.3s,
+            color 0.3s;
 
           &:nth-child(1),
           &:nth-child(3) {
@@ -168,7 +170,9 @@ items.forEach((el, index) => el.style.setProperty('--item', `${index}`))
       background-color: var(--item-color-bg);
       border: 1px solid var(--menu-color-bg);
       transform: scale(0) translateY(0);
-      transition: transform 0.3s var(--item-timing) var(--delay), background 0.3s;
+      transition:
+        transform 0.3s var(--item-timing) var(--delay),
+        background 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
