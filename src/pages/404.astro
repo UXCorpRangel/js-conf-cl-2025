@@ -1,0 +1,211 @@
+---
+import OpenGraph from '@components/OpenGraph.astro'
+import Button from '@components/ui/Button.astro'
+import Base from '@layouts/Base.astro'
+import { Code } from 'astro:components'
+
+const options = {
+  title: 'JSConf Chile 2025 | La más prestigiosa conferencia de JavaScript',
+  description:
+    'Acompáñanos en la tercera edición de la JSConf Chile donde tendremos Charlistas internacionales, comunidad, aprendizaje y conexiones.'
+}
+
+const snippet404 = [
+  'function error404() {',
+  '  if (!page.exists()) {',
+  '    throw new Error("La página que buscas no existe.");',
+  '  }',
+  '}'
+]
+---
+
+<Base options={options}>
+  <OpenGraph
+    description={options.description}
+    image="/og/og.jpg"
+    slot="social-media"
+    title={options.title}
+  />
+
+  <main class="container">
+    <span class="ball" style="--i: 1;"></span>
+    <span class="ball" style="--i: 2;"></span>
+    <span class="ball" style="--i: 3;"></span>
+    <span class="ball" style="--i: 4;"></span>
+    <span class="ball" style="--i: 5;"></span>
+    <span class="ball" style="--i: 6;"></span>
+    <span class="ball" style="--i: 7;"></span>
+    <span class="ball" style="--i: 8;"></span>
+
+    <section class="card">
+      <h1>404 <span>Página no encontrada</span></h1>
+
+      <div class="code">
+        <Code code={snippet404.join('\n')} lang="js" theme="aurora-x" wrap />
+      </div>
+
+      <Button component="a" href="/" variant="contained">
+        Volver al inicio
+      </Button>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .container {
+    --balls: 8;
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      inset: 0;
+      position: absolute;
+      pointer-events: none;
+
+      filter: contrast(127%);
+      backdrop-filter: blur(4rem);
+      background-color: rgb(from var(--stone-950) r g b / 0.3);
+    }
+
+    & .ball {
+      --size: 9rem;
+      --radius: calc(9vmin * var(--i));
+      --color: color-mix(
+        in srgb,
+        var(--yellow-500) calc(((100 / var(--balls)) - var(--i)) * (100% / var(--balls))),
+        #b308ea calc((var(--i) - 1) * (100% / var(--balls)))
+      );
+
+      z-index: calc(var(--i) * -1);
+      position: absolute;
+      inset-block-start: calc(50% + var(--radius) * sin(calc(3.14 / 4 * (var(--i) - 1))));
+      inset-inline-start: calc(50% + var(--radius) * cos(calc(3.14 / 4 * (var(--i) - 1))));
+
+      width: var(--size);
+      aspect-ratio: 1 / 1;
+      border-radius: 9999px;
+
+      user-select: none;
+      pointer-events: none;
+      background: var(--color);
+      filter: blur(1rem) drop-shadow(0 0 0.25rem var(--color));
+
+      will-change: transform;
+      animation: orbit linear infinite;
+
+      @media (prefers-reduced-motion: reduce) {
+        & {
+          opacity: 0.1;
+          animation: none;
+        }
+      }
+
+      &:nth-child(1) {
+        animation-delay: -3s;
+        animation-duration: 39s;
+        animation-direction: reverse;
+        transform-origin: calc(var(--size) * 2) calc(var(--size) * -1.5);
+      }
+
+      &:nth-child(2) {
+        animation-delay: -24s;
+        animation-duration: 54s;
+        transform-origin: calc(var(--size) * -2) var(--size);
+      }
+
+      &:nth-child(3) {
+        animation-delay: -12s;
+        animation-duration: 27s;
+        animation-direction: reverse;
+        transform-origin: calc(var(--size) * -2) calc(var(--size) * -1.5);
+      }
+
+      &:nth-child(4) {
+        animation-delay: -21s;
+        animation-duration: 42s;
+        transform-origin: calc(var(--size) * -2) calc(var(--size) * -1);
+      }
+
+      &:nth-child(5) {
+        animation-delay: -42s;
+        animation-duration: 36s;
+        transform-origin: calc(var(--size) * 2) calc(var(--size) * 2);
+      }
+
+      &:nth-child(6) {
+        animation-delay: -12s;
+        animation-duration: 33s;
+        animation-direction: reverse;
+        transform-origin: calc(var(--size) * -3) 0;
+      }
+
+      &:nth-child(7) {
+        animation-delay: -9s;
+        animation-duration: 52s;
+        transform-origin: 0 calc(var(--size) * 4);
+      }
+
+      &:nth-child(8) {
+        animation-delay: -27s;
+        animation-duration: 42s;
+        transform-origin: calc(var(--size) * -1) calc(var(--size) * 3.5);
+      }
+    }
+
+    & .card {
+      padding: 2rem;
+      margin: 0 auto;
+      position: absolute;
+      border-radius: 0.75rem;
+      background-color: #07090f;
+      border: 0.25rem solid var(--amber-500);
+      box-shadow: 0 0 3rem rgb(from var(--amber-500) r g b / 0.3);
+
+      gap: 0.25rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      user-select: none;
+
+      & h1 {
+        margin: 0;
+        font-size: 4.5rem;
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--yellow-500);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        & span {
+          font-size: 1.5rem;
+          font-weight: 400;
+          color: var(--amber-500);
+        }
+      }
+
+      & .code {
+        margin: 1rem 0;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  @keyframes orbit {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
