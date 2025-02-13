@@ -164,6 +164,7 @@ const snippet404 = [
       padding: 2rem;
       margin: 0 auto;
       position: absolute;
+      max-width: 60vw;
       border-radius: 0.75rem;
       background-color: #07090f;
       border: 0.25rem solid var(--amber-500);
@@ -184,6 +185,7 @@ const snippet404 = [
         color: var(--yellow-500);
 
         display: flex;
+        text-align: center;
         align-items: center;
         justify-content: center;
         flex-direction: column;
@@ -199,6 +201,22 @@ const snippet404 = [
         margin: 1rem 0;
         width: 100%;
         max-width: 100%;
+      }
+
+      @media (width <= 768px) {
+        gap: 2rem;
+
+        & h1 {
+          font-size: 3rem;
+
+          & span {
+            font-size: 1rem;
+          }
+        }
+
+        & .code {
+          display: none;
+        }
       }
     }
   }
