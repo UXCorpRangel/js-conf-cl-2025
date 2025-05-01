@@ -81,7 +81,7 @@
     "lint-staged": "15.4.3",
     "neostandard": "0.12.1",
     "simple-git-hooks": "2.11.1",
-    "typescript-eslint": "8.23.0",
+    "typescript-eslint": "8.31.1",
     "yaml-eslint-parser": "1.2.3"
   },
   "engines": {
