@@ -74,7 +74,7 @@
     "eslint-plugin-jsonc": "2.19.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-package-json": "0.25.0",
-    "eslint-plugin-perfectionist": "4.8.0",
+    "eslint-plugin-perfectionist": "4.12.3",
     "eslint-plugin-yml": "1.16.0",
     "globals": "15.14.0",
     "jsonc-eslint-parser": "2.4.0",
