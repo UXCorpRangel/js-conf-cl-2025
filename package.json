@@ -66,7 +66,7 @@
   "devDependencies": {
     "@commitlint/cli": "19.7.1",
     "@commitlint/config-conventional": "19.7.1",
-    "@eslint/js": "9.20.0",
+    "@eslint/js": "9.25.1",
     "@ls-lint/ls-lint": "2.2.3",
     "astro-eslint-parser": "1.2.1",
     "eslint": "9.20.0",
